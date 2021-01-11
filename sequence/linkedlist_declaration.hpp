@@ -6,23 +6,24 @@ namespace toolkit{
     class listnode{
     private:
         listnode<T>* next_ = NULL;
-        T* value_ = NULL;
+        T value_;
     public:
-        listnode(T* value) ;
+        listnode(const T& value) ;
         listnode<T>* next() ;
         void setnext(listnode<T>* next) ;
         T& get(unsigned long index) ;
         T& value() ;
+        listnode<T>* end() ;
     } ;
     template<typename T>
     class linkedlist{
     private:
         listnode<T>* first_;
+        unsigned long size_;
     public:
-        linkedlist() ;
         void add(T element) ;
-        T get(unsigned long index) ;
-        bool contains(T element) ;
+        T& get(unsigned long index) ;
+        const unsigned long& size() const;
     } ;
 }
 
