@@ -4,14 +4,20 @@
 namespace toolkit{
     template <typename T>
     class listnode{
+    private:
+        listnode<T>* next_ = NULL;
+        T* value_ = NULL;
     public:
-        listnode() ;
+        listnode(T* value) ;
         listnode<T>* next() ;
+        void setnext(listnode<T>* next) ;
         T& get(unsigned long index) ;
         T& value() ;
     } ;
     template<typename T>
     class linkedlist{
+    private:
+        listnode<T>* first_;
     public:
         linkedlist() ;
         void add(T element) ;
