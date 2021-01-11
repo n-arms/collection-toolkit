@@ -2,6 +2,14 @@
 #define LINKEDLIST_DEC_H
 
 namespace toolkit{
+    template <typename T>
+    class listnode{
+    public:
+        listnode() ;
+        listnode<T>& next() ;
+        listnode<T>& get(unsigned long index) ;
+        T value();
+    } ;
     template<typename T>
     class linkedlist{
     public:
