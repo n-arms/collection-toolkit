@@ -6,9 +6,9 @@ namespace toolkit{
     class listnode{
     public:
         listnode() ;
-        listnode<T>& next() ;
-        listnode<T>& get(unsigned long index) ;
-        T value();
+        listnode<T>* next() ;
+        T& get(unsigned long index) ;
+        T& value() ;
     } ;
     template<typename T>
     class linkedlist{
