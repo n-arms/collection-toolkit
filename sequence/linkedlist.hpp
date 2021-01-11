@@ -44,7 +44,7 @@ namespace toolkit{
     const unsigned long& linkedlist<T>::size() const {
       return size_;
     }
-
+    
 }
 
 #endif

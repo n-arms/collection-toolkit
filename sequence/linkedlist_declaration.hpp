@@ -23,7 +23,7 @@ namespace toolkit{
     public:
         void add(T element) ;
         T& get(unsigned long index) ;
-        const unsigned long& size() const;
+        const unsigned long& size() const ;
     } ;
 }
 
