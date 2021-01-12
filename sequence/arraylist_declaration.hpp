@@ -13,6 +13,8 @@ namespace toolkit{
     const T& operator[](unsigned long index) const ;
     unsigned long size() const ;
     void remove(unsigned long index);
+    long find(const T& element) const;
+    void print() const;
   } ;
 }
 

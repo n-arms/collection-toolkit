@@ -32,6 +32,7 @@ namespace toolkit{
         void remove(unsigned long index) ;
         ~linkedlist() ;
         listnode<T>* first() ;
+        
     } ;
 }
 

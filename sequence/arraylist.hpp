@@ -51,6 +51,24 @@ namespace toolkit{
     }
   }
 
+  template<typename T>
+  long arraylist<T>::find(const T& element) const{
+    for (long i = 0; i<size_; i++){
+      if (data_[i]==element)
+      return i;
+    }
+    return -1;
+  }
+
+  template<typename T>
+  void arraylist<T>::print() const{
+    for (long i = 0; i<size_; i++){
+      std::cout << data_[i];
+      if (i != (size_-1))
+      std::cout << ", ";
+    }
+  }
+
 
 }
 
