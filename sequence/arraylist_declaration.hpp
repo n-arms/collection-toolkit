@@ -5,15 +5,14 @@ namespace toolkit{
   template<typename T>
   class arraylist{
   private:
-    T* data_;
-    unsigned long capacity_;
-    unsigned long size_;
+    T* data_ = NULL;
+    unsigned long capacity_ = 0;
+    unsigned long size_ = 0;
   public:
-    arraylist<T>() ;
     void add(const T& element) ;
-    const T& operator[](unsigned long index) const;
-    
-
+    const T& operator[](unsigned long index) const ;
+    const unsigned long size() const ;
+    void remove(unsigned long index) const ;
   } ;
 }
 

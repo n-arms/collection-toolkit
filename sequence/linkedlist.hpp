@@ -75,7 +75,7 @@ namespace toolkit{
       first_->setnext(old_ptr);
       size_++;
     }
-
+    
     template<typename T>
     T& linkedlist<T>::get(unsigned long index){
       return first_->get(index);
