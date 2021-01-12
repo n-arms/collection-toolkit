@@ -11,8 +11,8 @@ namespace toolkit{
   public:
     void add(const T& element) ;
     const T& operator[](unsigned long index) const ;
-    const unsigned long size() const ;
-    void remove(unsigned long index) const ;
+    unsigned long size() const ;
+    void remove(unsigned long index);
   } ;
 }
 

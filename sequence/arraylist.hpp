@@ -36,6 +36,21 @@ namespace toolkit{
     throw 0;
   }
 
+  template<typename T>
+  unsigned long arraylist<T>::size() const{
+    return size_;
+  }
+
+  template<typename T>
+  void arraylist<T>::remove(unsigned long index){
+    if (index >= size_)
+    throw 0;
+    size_-=1;
+    for (int i = index; i<size_; i++){
+      data_[i] = data_[i+1];
+    }
+  }
+
 
 }
 
