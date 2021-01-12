@@ -16,6 +16,7 @@ namespace toolkit{
         const long find(const T& element, unsigned long index) const;
         void print() const;
         ~listnode() ;
+        void remove(unsigned long index) ;
     } ;
     template<typename T>
     class linkedlist{

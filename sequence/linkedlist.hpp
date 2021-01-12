@@ -57,6 +57,18 @@ namespace toolkit{
     }
 
     template<typename T>
+    void listnode<T>::remove(unsigned long index){
+      if (index == 1){
+        listnode<T>* old_ptr = next_;
+        next_ = old_ptr->next();
+        old_ptr->setnext(NULL);
+        delete old_ptr;
+      }else{
+        next_->remove(index-1);
+      }
+    }
+
+    template<typename T>
     void linkedlist<T>::add(T element){
       listnode<T>* old_ptr = first_;
       first_ = new listnode<T>(element);
@@ -94,6 +106,12 @@ namespace toolkit{
     template<typename T>
     listnode<T>* linkedlist<T>::first(){
       return first_;
+    }
+
+    template<typename T>
+    void linkedlist<T>::remove(unsigned long index){
+      size_--;
+      first_->remove(index);
     }
 }
 
