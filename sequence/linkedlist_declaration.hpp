@@ -9,21 +9,28 @@ namespace toolkit{
         T value_;
     public:
         listnode(const T& value) ;
-        listnode<T>* next() ;
+        listnode<T>* next() const;
         void setnext(listnode<T>* next) ;
-        T& get(unsigned long index) ;
-        T& value() ;
-        listnode<T>* end() ;
+        T& get(unsigned long index);
+        const T& value() const ;
+        const long find(const T& element, unsigned long index) const;
+        void print() const;
+        ~listnode() ;
     } ;
     template<typename T>
     class linkedlist{
     private:
-        listnode<T>* first_;
+        listnode<T>* first_ = NULL;
         unsigned long size_;
     public:
         void add(T element) ;
         T& get(unsigned long index) ;
         const unsigned long& size() const ;
+        long find(const T& element) const;
+        void print() const;
+        void remove(unsigned long index) ;
+        ~linkedlist() ;
+        listnode<T>* first() ;
     } ;
 }
 
