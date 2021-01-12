@@ -15,6 +15,13 @@ unsigned long long toolkit::hash_string(const std::string& s){
   return total%m;
 }
 
+template<typename K, typename V>
+hashmap<K, V>::hashmap(unsigned long long (*hash)(K), unsigned long long size){
+    hash_ = hash;
+    size_ = size;
+}
+
+template<typename K, typename V>
 
 
 
