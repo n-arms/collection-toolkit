@@ -55,7 +55,7 @@ namespace toolkit{
   }
 
   template<typename K, typename V>
-  V toolkit::hashmap<K, V>::get(const K& key){
+  V& toolkit::hashmap<K, V>::get(const K& key){
     for (int i = 0; i<data_[(hash_)(key)%size_].size(); i++){
       if (data_[(hash_)(key)%size_].get(i).matchKey(key)){
         return data_[(hash_)(key)%size_].get(i).value();
@@ -73,6 +73,11 @@ namespace toolkit{
       }
     }
     return false;
+  }
+
+  template<typename K, typename V>
+  toolkit::hashmap<K, V>::~hashmap(){
+    delete[] data_;
   }
 
 }

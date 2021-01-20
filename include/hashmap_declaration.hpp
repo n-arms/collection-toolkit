@@ -27,8 +27,9 @@ namespace toolkit{
     unsigned long long size_;
   public:
     hashmap(unsigned long long (*hash)(const K&), unsigned long long size) ;
+    ~hashmap();
     void put(const K& key, const V& value) ;
-    V get(const K& key) ;
+    V& get(const K& key) ;
     bool contains(const K& key) const;
   } ;
 }
