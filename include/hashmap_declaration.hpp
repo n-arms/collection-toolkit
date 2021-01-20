@@ -25,6 +25,7 @@ namespace toolkit{
     linkedlist<pair<K, V>>* data_ = NULL;
     unsigned long long (*hash_)(const K&);
     unsigned long long size_;
+    unsigned long long numKeys_;
   public:
     hashmap(unsigned long long (*hash)(const K&), unsigned long long size) ;
     ~hashmap() ;
@@ -33,6 +34,8 @@ namespace toolkit{
     bool contains(const K& key) const ;
     bool remove(const K& key) ;
     bool replace(const K& key, const V& value) ;
+    unsigned long long size() ;
+    bool isEmpty() ;
   } ;
 }
 

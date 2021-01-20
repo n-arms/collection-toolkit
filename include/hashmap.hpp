@@ -47,11 +47,13 @@ namespace toolkit{
       hash_ = hash;
       size_ = size;
       data_ = new toolkit::linkedlist<toolkit::pair<K, V>>[size_];
+      numKeys_ = 0;
   }
 
   template<typename K, typename V>
   void toolkit::hashmap<K, V>::put(const K& key, const V& value){
     data_[(hash_)(key)%size_].add(pair<K, V>(key, value));
+    numKeys_++;
   }
 
   template<typename K, typename V>
@@ -86,6 +88,7 @@ namespace toolkit{
     for (int i = 0; i<data_[index].size(); i++){
       if (data_[index].get(i).matchKey(key)){
         data_[index].remove(i);
+        numKeys_--;
         return true;
       }
     }
@@ -102,6 +105,16 @@ namespace toolkit{
       }
     }
     return false;
+  }
+
+  template<typename K, typename V>
+  unsigned long long toolkit::hashmap<K, V>::size(){
+    return numKeys_;
+  }
+
+  template<typename K, typename V>
+  bool toolkit::hashmap<K, V>::isEmpty(){
+    return numKeys_>0;
   }
 
 }
