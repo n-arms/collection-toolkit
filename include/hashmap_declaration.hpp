@@ -13,10 +13,9 @@ namespace toolkit{
     K key_;
     V value_;
   public:
-    pair(const K& key, const V& value) ;
+    pair(const K& key, V value) ;
     bool matchKey(K key) const;
-    V value() const;
-    K key() const;
+    V& value();
     bool operator==(const pair<K, V>& other) const;
   } ;
 
@@ -30,6 +29,7 @@ namespace toolkit{
     hashmap(unsigned long long (*hash)(const K&), unsigned long long size) ;
     void put(const K& key, const V& value) ;
     V get(const K& key) ;
+    bool contains(const K& key) const;
   } ;
 }
 
