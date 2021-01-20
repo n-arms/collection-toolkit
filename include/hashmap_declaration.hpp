@@ -32,6 +32,7 @@ namespace toolkit{
     V& get(const K& key) ;
     bool contains(const K& key) const ;
     bool remove(const K& key) ;
+    bool replace(const K& key, const V& value) ;
   } ;
 }
 

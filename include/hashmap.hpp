@@ -83,10 +83,21 @@ namespace toolkit{
   template<typename K, typename V>
   bool toolkit::hashmap<K, V>::remove(const K& key){
     unsigned long long index = (hash_)(key)%size_;
-    unsigned long long position;
     for (int i = 0; i<data_[index].size(); i++){
       if (data_[index].get(i).matchKey(key)){
         data_[index].remove(i);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  template<typename K, typename V>
+  bool toolkit::hashmap<K, V>::replace(const K& key, const V& value){
+    unsigned long index = (hash_)(key)%size_;
+    for (int i = 0; i<data_[index].size(); i++){
+      if (data_[index].get(i).matchKey(key)){
+        data_[index].get(i) = pair<K, V>(key, value);
         return true;
       }
     }
