@@ -96,6 +96,7 @@ namespace toolkit{
 
     template<typename T>
     void toolkit::linkedlist<T>::print() const{
+      if (first_!=NULL)
       first_->print();
       std::cout << std::endl;
     }
@@ -114,7 +115,18 @@ namespace toolkit{
     template<typename T>
     void toolkit::linkedlist<T>::remove(unsigned long index){
       size_--;
-      first_->remove(index);
+      if (index==0){
+        if (size_<=0){
+          listnode<T>* old_ptr = first_;
+          first_ = NULL;
+          delete first_;
+        }else{
+          listnode<T>* old_ptr = first_;
+          first_ = first_->next();
+        }
+      }else{
+        first_->remove(index);
+      }
     }
 }
 
