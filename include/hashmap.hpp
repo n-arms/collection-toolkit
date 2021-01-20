@@ -28,13 +28,18 @@ namespace toolkit{
   }
 
   template<typename K, typename V>
-  bool toolkit::pair<K, V>::matchKey(const K& key) const{
-    return key = key_;
+  bool toolkit::pair<K, V>::matchKey(K key) const{
+    return key == key_;
   }
 
   template<typename K, typename V>
-  V& toolkit::pair<K, V>::value() const{
+  V toolkit::pair<K, V>::value() const{
     return value_;
+  }
+
+  template<typename K, typename V>
+  K toolkit::pair<K, V>::key() const{
+    return key_;
   }
 
   template<typename K, typename V>
@@ -52,6 +57,17 @@ namespace toolkit{
   template<typename K, typename V>
   void toolkit::hashmap<K, V>::put(const K& key, const V& value){
     data_[(hash_)(key)%size_].add(pair<K, V>(key, value));
+  }
+
+  template<typename K, typename V>
+  V toolkit::hashmap<K, V>::get(const K& key){
+    for (int i = 0; i<data_[(hash_)(key)%size_].size(); i++){
+      if (data_[(hash_)(key)%size_].get(i).matchKey(key)){
+        return data_[(hash_)(key)%size_].get(i).value();
+      }
+
+    }
+    throw 0;
   }
 
 }
