@@ -2,35 +2,37 @@
 #define LINKED_LIST_H
 #include "linkedlist_declaration.hpp"
 #include <iostream>
+
+
 namespace toolkit{
     template<typename T>
-    listnode<T>::listnode(const T& value){
-        value_ = value;
+    toolkit::listnode<T>::listnode(const T& value){
+        value_ = new T(value);
     }
 
     template<typename T>
-    void listnode<T>::setnext(listnode<T>* next){
+    void toolkit::listnode<T>::setnext(listnode<T>* next){
         next_ = next;
     }
 
     template<typename T>
-    listnode<T>* listnode<T>::next() const{
+    listnode<T>* toolkit::listnode<T>::next() const{
         return next_;
     }
 
     template<typename T>
-    T& listnode<T>::get(unsigned long index){
-        return ((index==0L) ? value_ : next_->get(index-1L));
+    T& toolkit::listnode<T>::get(unsigned long index){
+        return ((index==0L) ? *value_ : next_->get(index-1L));
     }
 
     template<typename T>
-    const T& listnode<T>::value() const{
-        return value_;
+    const T& toolkit::listnode<T>::value() const{
+        return *value_;
     }
 
     template<typename T>
-    const long listnode<T>::find(const T& element, unsigned long index) const{
-      if (element==value_){
+    const long toolkit::listnode<T>::find(const T& element, unsigned long index) const{
+      if (element==*value_){
         return index;
       }
       else if (next_ != NULL){
@@ -41,8 +43,8 @@ namespace toolkit{
     }
 
     template<typename T>
-    void listnode<T>::print() const{
-      std::cout << value_;
+    void toolkit::listnode<T>::print() const{
+      std::cout << *value_;
       if (next_ != NULL){
         std::cout << ", ";
         next_->print();
@@ -50,14 +52,15 @@ namespace toolkit{
     }
 
     template<typename T>
-    listnode<T>::~listnode(){
+    toolkit::listnode<T>::~listnode(){
       if (next_ != NULL){
         delete next_;
       }
+      delete value_;
     }
 
     template<typename T>
-    void listnode<T>::remove(unsigned long index){
+    void toolkit::listnode<T>::remove(unsigned long index){
       if (index == 1){
         listnode<T>* old_ptr = next_;
         next_ = old_ptr->next();
@@ -69,47 +72,47 @@ namespace toolkit{
     }
 
     template<typename T>
-    void linkedlist<T>::add(T element){
+    void toolkit::linkedlist<T>::add(T element){
       listnode<T>* old_ptr = first_;
       first_ = new listnode<T>(element);
       first_->setnext(old_ptr);
       size_++;
     }
-    
+
     template<typename T>
-    T& linkedlist<T>::get(unsigned long index){
+    T& toolkit::linkedlist<T>::get(unsigned long index){
       return first_->get(index);
     }
 
     template<typename T>
-    const unsigned long& linkedlist<T>::size() const {
+    const unsigned long& toolkit::linkedlist<T>::size() const {
       return size_;
     }
 
     template<typename T>
-    long linkedlist<T>::find(const T& element) const{
+    long toolkit::linkedlist<T>::find(const T& element) const{
       return first_->find(element, 0);
     }
 
     template<typename T>
-    void linkedlist<T>::print() const{
+    void toolkit::linkedlist<T>::print() const{
       first_->print();
       std::cout << std::endl;
     }
 
     template<typename T>
-    linkedlist<T>::~linkedlist(){
+    toolkit::linkedlist<T>::~linkedlist(){
       if (first_ != NULL)
       delete first_;
     }
 
     template<typename T>
-    listnode<T>* linkedlist<T>::first(){
+    listnode<T>* toolkit::linkedlist<T>::first(){
       return first_;
     }
 
     template<typename T>
-    void linkedlist<T>::remove(unsigned long index){
+    void toolkit::linkedlist<T>::remove(unsigned long index){
       size_--;
       first_->remove(index);
     }

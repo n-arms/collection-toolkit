@@ -5,6 +5,7 @@
 
 namespace toolkit{
   unsigned long long hash_string(const std::string& s) ;
+  unsigned long long hash_char(const char& c) ;
 
   template<typename K, typename V>
   class pair{
@@ -12,19 +13,20 @@ namespace toolkit{
     K key_;
     V value_;
   public:
-    pair() ;
+    pair(const K& key, const V& value) ;
     bool matchKey(const K& key) const;
     V& value() const;
+    bool operator==(const pair<K, V>& other) const;
   } ;
 
   template<typename K, typename V>
   class hashmap{
   private:
     linkedlist<pair<K, V>>* data_ = NULL;
-    unsigned long long (*hash_)(K);
+    unsigned long long (*hash_)(const K&);
     unsigned long long size_;
   public:
-    hashmap(unsigned long long (*hash)(K), unsigned long long size) ;
+    hashmap(unsigned long long (*hash)(const K&), unsigned long long size) ;
     void put(const K& key, const V& value) ;
     V& get(const K& key) ;
   } ;

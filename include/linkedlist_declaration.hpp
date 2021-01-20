@@ -6,9 +6,9 @@ namespace toolkit{
     class listnode{
     private:
         listnode<T>* next_ = NULL;
-        T value_;
+        T* value_;
     public:
-        listnode(const T& value) ;
+        listnode(const T& value);
         listnode<T>* next() const;
         void setnext(listnode<T>* next) ;
         T& get(unsigned long index);
@@ -18,6 +18,7 @@ namespace toolkit{
         ~listnode() ;
         void remove(unsigned long index) ;
     } ;
+
     template<typename T>
     class linkedlist{
     private:
@@ -32,7 +33,7 @@ namespace toolkit{
         void remove(unsigned long index) ;
         ~linkedlist() ;
         listnode<T>* first() ;
-        
+
     } ;
 }
 
